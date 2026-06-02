@@ -1,0 +1,13 @@
+# config/config.yaml
+
+data:
+  raw_snapshot_path: "data/raw_snapshot.csv"
+  batch_size: 1
+
+model:
+  hidden_dim: 16
+  lr: 0.01
+
+trainer:
+  max_epochs: 50
+  accelerator: "auto"  # Automatically chooses GPU if available, falls back to CPU
