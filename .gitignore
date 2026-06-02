@@ -1,0 +1,58 @@
+# ==============================================================================
+# Machine Learning & Data Artifacts (Crucial for MLOps Stability)
+# ==============================================================================
+# Never commit raw, intermediate, or processed data snapshots to git
+data/
+*.csv
+*.parquet
+*.parquet.crc
+
+# Never commit serialized model weights, checkpoints, or optimization matrices
+*.pth
+*.pt
+*.ckpt
+lightning_logs/
+
+# ==============================================================================
+# MLflow Tracking & Experimentation Run Storage
+# ==============================================================================
+# Exclude local SQLite tracking backend and metadata stores
+mlflow.db
+mlruns/
+.mlflow/
+
+# ==============================================================================
+# Python Environment, Package Managers, and Caching
+# ==============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Poetry environment and dependency files
+.venv/
+poetry.lock
+
+# Jupyter Notebook checkpoints and temporary states
+.ipynb_checkpoints/
+
+# ==============================================================================
+# Testing & Quality Assurance
+# ==============================================================================
+# Exclude local pytest cache configurations
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==============================================================================
+# System & IDE Configurations
+# ==============================================================================
+# macOS specific system files
+.DS_Store
+
+# IDE specific settings (VS Code / PyCharm)
+.vscode/
+.idea/
