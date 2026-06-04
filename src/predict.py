@@ -1,4 +1,6 @@
 # src/predict.py
+import sys
+import os
 import yaml
 import torch
 import mlflow.pytorch
@@ -9,6 +11,15 @@ def load_production_model(config_path: str = "config/config.yaml"):
     Connects to the centralized tracking database and pulls down the latest 
     approved version of your Graph Attention Network from the Model Registry.
     """
+
+    current_dir = os.path.dirname(os.path.abspath(__file__)) # src/
+    root_dir = os.path.dirname(current_dir) # project root
+    
+    if root_dir not in sys.path:
+        sys.path.insert(0, root_dir)
+    if current_dir not in sys.path:
+        sys.path.insert(0, current_dir)
+
     with open(config_path, "r") as f:
         config = yaml.safe_load(f)
         
