@@ -39,16 +39,11 @@ jobs:
         path: .venv
         key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
-    # 5. Install project dependencies (skips if cache hit occurs)
+    # 5. Install project dependencies
     - name: Install Project Dependencies
-      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install --no-interaction --no-root
 
-    # 6. Install the project root package itself
-    - name: Install Project Root
-      run: poetry install --no-interaction
-
-    # 7. Execute the Automated Quality Gate
+    # 6. Execute the Automated Quality Gate
     - name: Run Pytest Suite
       run: |
         poetry run pytest tests/
